@@ -1,6 +1,11 @@
 #include "Game.h"
 #include <iostream>
 
+void Game::StartGame()
+{
+	std::cout << "Starting Coin Rush!" << std::endl;
+}
+
 
 void Game::ShowInstructions()
 {	
@@ -34,7 +39,7 @@ void Game::ShowMenu()
 
 		if (choice == 1)
 		{
-			std::cout << "Starting Coin Rush!" << std::endl;
+			StartGame();
 		}
 		else if (choice == 2)
 		{
