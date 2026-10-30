@@ -27,7 +27,23 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 1
 
-Replace this paragraph with your stand up for this week. Use the prompts above to summarize your most recent milestone activity and work.
+Week 1 – Mid-Week Progress Check
+
+Progress Update
+
+I've been working on getting my C++ project, Coin Rush, set up and organized. It's a console game inspired by Sonic where the player moves forward, jumps over obstacles, collects coins, and tries to reach the finish before time runs out.
+
+I've set up my Visual Studio project and GitHub repository, created six Issues, and organized them on my Project board. I've also started coding the Game class. So far, I have a working menu with options to start the game, read instructions, or exit. I added input validation so the program handles incorrect choices without getting stuck in a loop. I've tested the menu and pushed my changes to GitHub.
+
+Experience Reflection
+
+I've used GitHub before, but I'm getting more experience using Issues and a Project board to organize my work. Breaking the project into smaller tasks makes it easier to see what needs to be done and what I'm currently working on.
+
+Focus Area
+
+One thing I'm focusing on is getting better at connecting different parts of a C++ program. I'm practicing how classes, methods, loops, and input work together instead of just understanding them separately. I'm also trying to build and test one feature at a time so I understand what I'm writing.
+
+My next step is to connect the menu to the actual gameplay and begin working on the player and level classes.
 
 ### Week 2
 
