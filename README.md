@@ -27,23 +27,21 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 1
 
-Week 1 – Mid-Week Progress Check
+**⚙️ Overview**
 
-Progress Update
+This week I worked on setting up Coin Rush and getting the foundation of the game started. I created my GitHub Issues and organized them on my Project board. I also created the Game class and built a working menu with options to start the game, view instructions, and exit. I started working on the Player class and added methods for speeding up and slowing down.
 
-I've been working on getting my C++ project, Coin Rush, set up and organized. It's a console game inspired by Sonic where the player moves forward, jumps over obstacles, collects coins, and tries to reach the finish before time runs out.
+**🌵 Challenges**
 
-I've set up my Visual Studio project and GitHub repository, created six Issues, and organized them on my Project board. I've also started coding the Game class. So far, I have a working menu with options to start the game, read instructions, or exit. I added input validation so the program handles incorrect choices without getting stuck in a loop. I've tested the menu and pushed my changes to GitHub.
+One problem I ran into was handling invalid input in the menu. When I entered a letter instead of a number, the program got stuck in an endless loop. I learned how to clear the input error and let the player try again. I'm also working on understanding how different classes and methods connect.
 
-Experience Reflection
+**🏆 Accomplishments**
 
-I've used GitHub before, but I'm getting more experience using Issues and a Project board to organize my work. Breaking the project into smaller tasks makes it easier to see what needs to be done and what I'm currently working on.
+I feel like I'm getting better at using what I've learned in C++ instead of just following examples. I created separate methods for the menu and instructions, added input validation, and started writing the player's speed logic. I've also gotten more comfortable organizing my work with GitHub Issues and commits.
 
-Focus Area
+**🔮 Next Steps**
 
-One thing I'm focusing on is getting better at connecting different parts of a C++ program. I'm practicing how classes, methods, loops, and input work together instead of just understanding them separately. I'm also trying to build and test one feature at a time so I understand what I'm writing.
-
-My next step is to connect the menu to the actual gameplay and begin working on the player and level classes.
+Next, I want to finish the Player class, connect speed to actual movement, and create the Level class. After that, I'll work on displaying the course and eventually connecting it to the game menu.
 
 ### Week 2
 
