@@ -17,3 +17,18 @@ void Player::SpeedUp()
 		speedX = maxSpeed;
 	}
 }
+
+void Player::Stop()
+{
+	speedX = 0.0f;
+}
+
+void Player::MoveForward()
+{
+	positionX += speedX;
+}
+
+float Player::GetPositionX()
+{
+	return positionX;
+}
