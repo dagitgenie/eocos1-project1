@@ -25,24 +25,32 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 <br>
 
-### Week 1
+**Project Title:** Coin Rush
 
-**⚙️ Overview**
+**Project Idea:**
 
-This week I worked on setting up Coin Rush and getting the foundation of the game started. I created my GitHub Issues and organized them on my Project board. I also created the Game class and built a working menu with options to start the game, view instructions, and exit. I started working on the Player class and added methods for speeding up and slowing down.
+Coin Rush is a console-based C++ game inspired by classic side-scrolling games like Sonic. The player will move forward through a level, collect coins, avoid obstacles, and try to reach the finish before time runs out. The goal is to create a simple but challenging game where timing and movement matter.
 
-**🌵 Challenges**
+**Core Features:**
 
-One problem I ran into was handling invalid input in the menu. When I entered a letter instead of a number, the program got stuck in an endless loop. I learned how to clear the input error and let the player try again. I'm also working on understanding how different classes and methods connect.
+1. Player movement with acceleration, deceleration, and jumping.
+2. Coin collection throughout the level.
+3. Obstacles and hazards the player must avoid.
+4. A countdown timer that limits how long the player has to finish.
 
-**🏆 Accomplishments**
+**Class Plan:**
 
-I feel like I'm getting better at using what I've learned in C++ instead of just following examples. I created separate methods for the menu and instructions, added input validation, and started writing the player's speed logic. I've also gotten more comfortable organizing my work with GitHub Issues and commits.
+- **Game:** Handles the main menu, instructions, and overall game flow.
+- **Player:** Stores the player's position and speed and handles movement.
+- **Level:** Handles the level layout and displays the map in the console.
 
-**🔮 Next Steps**
+**Current Focus:**
 
-Next, I want to finish the Player class, connect speed to actual movement, and create the Level class. After that, I'll work on displaying the course and eventually connecting it to the game menu.
+My current focus is getting the basic structure of the game working. I've created the three main classes, finished the menu, and connected the Level class so the map displays when the player starts the game. Next, I'll work on getting the player moving through the level and collecting coins.
 
+**GitHub Repository:**
+
+https://github.com/dagitgenie/eocos1-project1
 ### Week 2
 
 My next stand up will go here...
