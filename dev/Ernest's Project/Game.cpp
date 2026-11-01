@@ -1,9 +1,14 @@
 #include "Game.h"
+#include "Level.h"
 #include <iostream>
 
 void Game::StartGame()
 {
 	std::cout << "Starting Coin Rush!" << std::endl;
+
+	Level level;
+
+	level.DrawLevel();
 }
 
 
