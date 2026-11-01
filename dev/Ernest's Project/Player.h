@@ -11,6 +11,7 @@ public:
 	void SpeedUp();
 	void Stop();
 	void MoveForward();
+	float GetPositionX();
 
 private:
 
@@ -21,7 +22,7 @@ private:
 	float deceleration = -0.5f;
 	float maxSpeed = 3.0f;
 	
-	float GetPositionX();
+	
 
 };
 
