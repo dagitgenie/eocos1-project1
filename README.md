@@ -11,46 +11,23 @@ Hello my name is Ernest Ogletree. I am a student from Boston, Mass. The purpose 
 
 <br>
 
-## 📢 &nbsp; Weekly Stand Up
+### Week 1
 
-Each week I will summarize my milestone activity and progress by writing a stand-up. A stand-up is meant to be a succinct update on how things are going. Use these prompts as a guide on what to write about:
+**Overview:**
 
-⚙️ Overview - What I worked on this past week
-<br>
-🌵 Challenges - What problems did I have & how I'm addressing them
-<br>
-🏆 Accomplishments - What is something I "leveled up" on this week
-<br>
-🔮 Next Steps - What I plan to prioritize and do next
+This week I worked on getting the foundation of Coin Rush set up. I created the Game, Player, and Level classes, built the main menu, and got the level displaying in the console.
 
-<br>
+**Challenges:**
 
-**Project Title:** Coin Rush
+One challenge I ran into was figuring out how the different classes come together. I spent a fair amount of time understanding how Player handles movement and how Game controls when things happen.
 
-**Project Idea:**
+**Accomplishments:**
 
-Coin Rush is a console-based C++ game inspired by classic side-scrolling games like Sonic. The player will move forward through a level, collect coins, avoid obstacles, and try to reach the finish before time runs out. The goal is to create a simple but challenging game where timing and movement matter.
+I got the basic foundation of the game working, including the menu, instructions, and level display. I also added Player methods for movement, acceleration, deceleration, and position. I made 14 commits and successfully merged my dev branch into main.
 
-**Core Features:**
+**Next Steps:**
 
-1. Player movement with acceleration, deceleration, and jumping.
-2. Coin collection throughout the level.
-3. Obstacles and hazards the player must avoid.
-4. A countdown timer that limits how long the player has to finish.
-
-**Class Plan:**
-
-- **Game:** Handles the main menu, instructions, and overall game flow.
-- **Player:** Stores the player's position and speed and handles movement.
-- **Level:** Handles the level layout and displays the map in the console.
-
-**Current Focus:**
-
-My current focus is getting the basic structure of the game working. I've created the three main classes, finished the menu, and connected the Level class so the map displays when the player starts the game. Next, I'll work on getting the player moving through the level and collecting coins.
-
-**GitHub Repository:**
-
-https://github.com/dagitgenie/eocos1-project1
+This coming week, I'd like to get the player actually moving through the level and collecting coins. If possible, I'd also like to start working on collision detection, falls, and obstacles.
 ### Week 2
 
 My next stand up will go here...
