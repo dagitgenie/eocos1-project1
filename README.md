@@ -1,30 +1,13 @@
 # 🚀 Welcome to Project & Portfolio!
 
-This repository will be used to keep track of research and development conducted in this class. Follow the instructions below to get started.
-cos
-### Getting Started
-
-**1.** Review the [About](./docs/01_about/README.md) README and all of the links it provides.
-
-**2.** Review the documentation and [Getting Started](./docs/02_getting_started/README.md) steps in this repository's docs folder.
-
-**3.** Attend the first Live Lecture to see a live setup demo. If you are unable to attend, make sure to watch the archive.
-
-### Next Steps...
-
-After completing the above steps, feel free to begin updating this readme where indicated below. Remember to update this document each week to receive proper credit for the weekly Milestone assignment.
-
-<br>
-
-> ❗️ &nbsp; Now that you have read to this point, go ahead and delete this sentence and everything above it.
 
 <br>
 
 # Project & Portfolio 1
 
-### Student First & Last Name
+### Ernest Ogletree
 
-Hello my name is [enter name]. I am a student from [where are you from?]. The purpose of this repository is to practice development using version control. This work will help me begin to build a portfolio of skills and accomplishment that can be shared in the future.
+Hello my name is Ernest Ogletree. I am a student from Boston, Mass. The purpose of this repository is to practice development using version control. This work will help me begin to build a portfolio of skills and accomplishment that can be shared in the future.
 
 <br>
 
@@ -44,7 +27,21 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 1
 
-Replace this paragraph with your stand up for this week. Use the prompts above to summarize your most recent milestone activity and work.
+**⚙️ Overview**
+
+This week I worked on setting up Coin Rush and getting the foundation of the game started. I created my GitHub Issues and organized them on my Project board. I also created the Game class and built a working menu with options to start the game, view instructions, and exit. I started working on the Player class and added methods for speeding up and slowing down.
+
+**🌵 Challenges**
+
+One problem I ran into was handling invalid input in the menu. When I entered a letter instead of a number, the program got stuck in an endless loop. I learned how to clear the input error and let the player try again. I'm also working on understanding how different classes and methods connect.
+
+**🏆 Accomplishments**
+
+I feel like I'm getting better at using what I've learned in C++ instead of just following examples. I created separate methods for the menu and instructions, added input validation, and started writing the player's speed logic. I've also gotten more comfortable organizing my work with GitHub Issues and commits.
+
+**🔮 Next Steps**
+
+Next, I want to finish the Player class, connect speed to actual movement, and create the Level class. After that, I'll work on displaying the course and eventually connecting it to the game menu.
 
 ### Week 2
 
