@@ -27,7 +27,21 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 1
 
-Replace this paragraph with your stand up for this week. Use the prompts above to summarize your most recent milestone activity and work.
+**⚙️ Overview**
+
+This week I worked on setting up Coin Rush and getting the foundation of the game started. I created my GitHub Issues and organized them on my Project board. I also created the Game class and built a working menu with options to start the game, view instructions, and exit. I started working on the Player class and added methods for speeding up and slowing down.
+
+**🌵 Challenges**
+
+One problem I ran into was handling invalid input in the menu. When I entered a letter instead of a number, the program got stuck in an endless loop. I learned how to clear the input error and let the player try again. I'm also working on understanding how different classes and methods connect.
+
+**🏆 Accomplishments**
+
+I feel like I'm getting better at using what I've learned in C++ instead of just following examples. I created separate methods for the menu and instructions, added input validation, and started writing the player's speed logic. I've also gotten more comfortable organizing my work with GitHub Issues and commits.
+
+**🔮 Next Steps**
+
+Next, I want to finish the Player class, connect speed to actual movement, and create the Level class. After that, I'll work on displaying the course and eventually connecting it to the game menu.
 
 ### Week 2
 
