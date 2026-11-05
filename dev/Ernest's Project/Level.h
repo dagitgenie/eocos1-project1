@@ -9,5 +9,7 @@ private:
 public:
 
 	void DrawLevel(int playerColumn);
-
+	
+	float MaxPosition();
+	
 };

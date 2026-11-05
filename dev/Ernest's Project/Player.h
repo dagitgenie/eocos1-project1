@@ -10,7 +10,7 @@ public:
 	void SlowDown();
 	void SpeedUp();
 	void Stop();
-	void MoveForward();
+	void MoveForward(float maxPosition);
 	float GetPositionX();
 
 private:

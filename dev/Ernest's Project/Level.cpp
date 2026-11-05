@@ -1,4 +1,5 @@
 #include "Level.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 
@@ -7,9 +8,12 @@ void Level::DrawLevel(int playerColumn)
 {	
 	
 	std::string middleRow = "#S      O      O      F#";
-	middleRow[playerColumn] = 'P';
+	if (playerColumn >= 1 && playerColumn < static_cast<int>(middleRow.size()) - 1)
+	{
+		middleRow[playerColumn] = 'P';
+	}
 	
-	
+
 	std::cout << "########################" << std::endl;
 	
 	
@@ -19,7 +23,13 @@ void Level::DrawLevel(int playerColumn)
 	
 	
 	std::cout << "########################" << std::endl;
-	
-	
+}
 
+
+float Level::MaxPosition()
+{
+	const float maxPosition = 21.0f;
+	return maxPosition;
+
+	
 }

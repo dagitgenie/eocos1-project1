@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+
 #include "Game.h"
 #include "Player.h"
 #include "Level.h"
@@ -10,7 +12,7 @@ void Game::StartGame()
 	std::cout << "Starting Coin Rush!" << std::endl;
 	std::cout << "W = Speed Up | S = Slow Down | Q = Quit\n";
 	
-	
+	//const float maxPosition = 21.0f;
 	Player player;
 	Level level;
 	
@@ -30,12 +32,27 @@ void Game::StartGame()
 		if (command == 'w' || command == 'W')
 		{
 			player.SpeedUp();
-			player.MoveForward();
+			player.MoveForward(level.MaxPosition());
+
+			
 		}
+
+		if (command == 's' || command == 'S')
+		{
+			player.SlowDown();
+			player.MoveForward(level.MaxPosition());
+		}
+		std::system("cls");
 
 		std::cout << "Player position: " << player.GetPositionX() << std::endl;
 		
 		level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
+
+		if (player.GetPositionX() >= level.MaxPosition())
+		{
+			std::cout << "You've reached the finish!!" << std::endl;
+			break;
+		}
 	}
 	
 }

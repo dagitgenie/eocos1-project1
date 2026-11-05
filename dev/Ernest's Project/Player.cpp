@@ -1,4 +1,6 @@
 #include "Player.h"
+#include "Level.h"
+
 
 void Player::SlowDown()
 {	
@@ -23,8 +25,20 @@ void Player::Stop()
 	speedX = 0.0f;
 }
 
-void Player::MoveForward()
-{
+void Player::MoveForward(float maxPosition)
+{	
+	
+	float nextPosition = positionX += speedX;
+	if (nextPosition <= maxPosition)
+	{
+		positionX = nextPosition;
+	}
+
+	else
+	{
+		positionX = maxPosition;
+	}
+	
 	positionX += speedX;
 }
 
