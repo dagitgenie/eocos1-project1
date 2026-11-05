@@ -8,6 +8,6 @@ private:
 
 public:
 
-	void DrawLevel();
+	void DrawLevel(int playerColumn);
 
 };

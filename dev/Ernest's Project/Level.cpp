@@ -1,11 +1,25 @@
 #include "Level.h"
 #include <iostream>
+#include <string>
 
 
-void Level::DrawLevel()
-{
-	std::cout << "#############################################" << std::endl;
-	std::cout << "#" << "S" <<"     O      O     " << "F" << "#" << std::endl;
-	std::cout << "#############################################" << std::endl;
+void Level::DrawLevel(int playerColumn)
+{	
 	
+	std::string middleRow = "#S      O      O      F#";
+	middleRow[1] = 'P';
+	
+	
+	std::cout << "########################" << std::endl;
+	
+	
+	
+	std::cout << middleRow << std::endl;
+	
+	
+	
+	std::cout << "########################" << std::endl;
+	
+	
+
 }

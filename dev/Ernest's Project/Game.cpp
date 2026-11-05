@@ -1,14 +1,24 @@
 #include "Game.h"
 #include "Level.h"
 #include <iostream>
+#include "Player.h"
 
 void Game::StartGame()
 {
 	std::cout << "Starting Coin Rush!" << std::endl;
 
+	
 	Level level;
+	Player player;
 
-	level.DrawLevel();
+	player.SpeedUp();
+	player.MoveForward();
+
+	std::cout << "Player position: " << player.GetPositionX() << std::endl;
+	
+	
+
+	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
 }
 
 
