@@ -7,7 +7,7 @@ void Level::DrawLevel(int playerColumn)
 {	
 	
 	std::string middleRow = "#S      O      O      F#";
-	middleRow[1] = 'P';
+	middleRow[playerColumn] = 'P';
 	
 	
 	std::cout << "########################" << std::endl;

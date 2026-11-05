@@ -1,24 +1,43 @@
-#include "Game.h"
-#include "Level.h"
 #include <iostream>
+#include "Game.h"
 #include "Player.h"
+#include "Level.h"
+
+
 
 void Game::StartGame()
 {
 	std::cout << "Starting Coin Rush!" << std::endl;
-
+	std::cout << "W = Speed Up | S = Slow Down | Q = Quit\n";
 	
-	Level level;
+	
 	Player player;
-
-	player.SpeedUp();
-	player.MoveForward();
-
-	std::cout << "Player position: " << player.GetPositionX() << std::endl;
+	Level level;
 	
+	char command = ' ';
 	
 
-	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
+	while (command != 'q' && command != 'Q')
+	{	
+		std::cout << "Eneter command: ";
+		std::cin >> command;
+		
+		if (command == 'q' || command == 'Q')
+		{
+			break;
+		}
+
+		if (command == 'w' || command == 'W')
+		{
+			player.SpeedUp();
+			player.MoveForward();
+		}
+
+		std::cout << "Player position: " << player.GetPositionX() << std::endl;
+		
+		level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
+	}
+	
 }
 
 
