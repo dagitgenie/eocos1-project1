@@ -3,14 +3,15 @@
 #include <iostream>
 #include <string>
 
-
+//I move the origninal middleRow to private , this i did so that drawLevel doesnt keep redrawing the coins the player collects, everytime the funvtion runs. Instead it can access it directly when it need, also hy i didnt use a getter. 
+// second the displayrow shows the player without changing the store map.
 void Level::DrawLevel(int playerColumn)
 {	
 	
-	std::string middleRow = "#S      O      O      F#";
+	std::string displayRow = middleRow;
 	if (playerColumn >= 1 && playerColumn < static_cast<int>(middleRow.size()) - 1)
 	{
-		middleRow[playerColumn] = 'P';
+		displayRow[playerColumn] = 'P';
 	}
 	
 
@@ -18,7 +19,7 @@ void Level::DrawLevel(int playerColumn)
 	
 	
 	
-	std::cout << middleRow << std::endl;
+	std::cout << displayRow << std::endl;
 	
 	
 	
@@ -32,4 +33,19 @@ float Level::MaxPosition()
 	return maxPosition;
 
 	
+}
+
+ int Level::CollectCoinsBetween(int previousColumn, int newColumn)
+{
+	 int coinsCollected = 0;
+	 for (int column = previousColumn; column <= newColumn; column++)
+	 {
+		 if (middleRow[column] == 'O')
+		 {
+			 coinsCollected++;
+			 middleRow[column] + ' ';
+		 }
+	 }
+
+	 return coinsCollected;
 }
