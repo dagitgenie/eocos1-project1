@@ -34,18 +34,3 @@ float Level::MaxPosition()
 
 	
 }
-
- int Level::CollectCoinsBetween(int previousColumn, int newColumn)
-{
-	 int coinsCollected = 0;
-	 for (int column = previousColumn; column <= newColumn; column++)
-	 {
-		 if (middleRow[column] == 'O')
-		 {
-			 coinsCollected++;
-			 middleRow[column] + ' ';
-		 }
-	 }
-
-	 return coinsCollected;
-}

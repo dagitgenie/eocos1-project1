@@ -2,6 +2,11 @@
 #include "Level.h"
 
 
+
+
+
+
+
 void Player::SlowDown()
 {	
 	speedX += deceleration;
@@ -28,7 +33,7 @@ void Player::Stop()
 void Player::MoveForward(float maxPosition)
 {	
 	
-	float nextPosition = positionX += speedX;
+	float nextPosition = positionX + speedX;
 	if (nextPosition <= maxPosition)
 	{
 		positionX = nextPosition;
@@ -39,10 +44,43 @@ void Player::MoveForward(float maxPosition)
 		positionX = maxPosition;
 	}
 	
-	positionX += speedX;
 }
 
 float Player::GetPositionX()
 {
 	return positionX;
 }
+
+
+
+int Level::CollectCoinsBetween(int previousColumn, int newColumn)
+
+
+{	
+	int collectedThisMove = 0;
+	for (int column = previousColumn; column <= newColumn; column++)
+	{	
+		if (column >= 0 && column < static_cast<int>(middleRow.size()))
+		{
+			if (middleRow[column] == 'O')
+			{
+			collectedThisMove++;
+			middleRow[column] = ' ';
+			}
+		}
+			
+	}
+
+	return collectedThisMove;
+}
+
+void Player::AddCoins(int amount)
+{
+	coinsCollected += amount;
+}
+
+int Player::GetCoinsCollected() const
+{
+	return coinsCollected;
+}
+
