@@ -29,6 +29,8 @@ void Game::StartGame()
 			break;
 		}
 
+		int previousColumn = 1 + static_cast<int>(player.GetPositionX());
+
 		if (command == 'w' || command == 'W')
 		{
 			player.SpeedUp();
@@ -106,6 +108,7 @@ void Game::ShowMenu()
 		}
 
 	}
+
 
 
 }
