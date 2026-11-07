@@ -1,14 +1,70 @@
-#include "Game.h"
-#include "Level.h"
 #include <iostream>
+#include <cstdlib>
+
+#include "Game.h"
+#include "Player.h"
+#include "Level.h"
+
+
 
 void Game::StartGame()
 {
 	std::cout << "Starting Coin Rush!" << std::endl;
-
+	std::cout << "W = Speed Up | S = Slow Down | Q = Quit\n";
+	
+	
+	Player player;
 	Level level;
+	
+	char command = ' ';
+	
 
-	level.DrawLevel();
+	while (command != 'q' && command != 'Q')
+	{	
+		std::cout << "Eneter command: ";
+		std::cin >> command;
+		
+		if (command == 'q' || command == 'Q')
+		{
+			break;
+		}
+
+		int previousColumn = 1 + static_cast<int>(player.GetPositionX());
+
+		if (command == 'w' || command == 'W')
+		{
+			player.SpeedUp();
+			player.MoveForward(level.MaxPosition());
+
+			
+		}
+
+		if (command == 's' || command == 'S')
+		{
+			player.SlowDown();
+			player.MoveForward(level.MaxPosition());
+		}
+		std::system("cls");
+
+		std::cout << "Player position: " << player.GetPositionX() << std::endl;
+
+		int newColumn = 1 + static_cast<int>(player.GetPositionX());
+
+		int collectedThisMove = level.CollectCoinsBetween(previousColumn, newColumn);
+
+		player.AddCoins(collectedThisMove);
+		
+		level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
+
+		std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
+
+		if (player.GetPositionX() >= level.MaxPosition())
+		{
+			std::cout << "You've reached the finish!!" << std::endl;
+			break;
+		}
+	}
+	
 }
 
 
@@ -60,6 +116,7 @@ void Game::ShowMenu()
 		}
 
 	}
+
 
 
 }
