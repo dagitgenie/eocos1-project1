@@ -56,6 +56,8 @@ void Game::StartGame()
 		
 		level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
 
+		std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
+
 		if (player.GetPositionX() >= level.MaxPosition())
 		{
 			std::cout << "You've reached the finish!!" << std::endl;
