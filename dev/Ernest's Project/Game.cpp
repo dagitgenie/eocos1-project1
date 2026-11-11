@@ -97,7 +97,15 @@ void Game::ShowMenu()
 
 		try
 		{
-			choice = std::stoi(input);
+			std::size_t position = 0;
+
+			choice = std::stoi(input, &position);
+
+			if (position != input.length())
+			{
+				std::cout << "Invalid choice. Pleae select 1-3.\n";
+				continue;
+			}
 		}
 		catch (const std::invalid_argument&)
 		{
