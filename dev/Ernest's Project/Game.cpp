@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <limits>
 
 #include "Game.h"
 #include "Player.h"
@@ -87,20 +88,31 @@ void Game::ShowMenu()
 
 	int choice = 0;
 
+	std::string input;
+
 	while (choice != 3)
 	{
 		std::cout << "Enter your choice" << std::endl;
-		if (!(std::cin >> choice))
+		std::getline(std::cin, input);
+
+		try
 		{
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
+			choice = std::stoi(input);
+		}
+		catch (const std::invalid_argument&)
+		{
 			std::cout << "Invalid choice. Please select 1-3.\n";
 			continue;
 		}
-
+		catch (const std::out_of_range&)
+		{
+			std::cout << "Number is too large.\n";
+			continue;
+		}
 		if (choice == 1)
 		{
 			StartGame();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 		else if (choice == 2)
 		{
