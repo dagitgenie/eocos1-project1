@@ -6,7 +6,20 @@
 #include "Player.h"
 #include "Level.h"
 
-
+void Game::HandleMovement(char command, Player&
+	player, float maxPosition)
+{
+	if (command == 'w' || command == 'W')
+	{
+		player.SpeedUp();
+		player.MoveForward(maxPosition);
+	}
+	else if (command == 's' || command == 'S')
+	{
+		player.SlowDown();
+		player.MoveForward(maxPosition);
+	}
+}
 
 void Game::StartGame()
 {
@@ -32,19 +45,8 @@ void Game::StartGame()
 
 		int previousColumn = 1 + static_cast<int>(player.GetPositionX());
 
-		if (command == 'w' || command == 'W')
-		{
-			player.SpeedUp();
-			player.MoveForward(level.MaxPosition());
+		HandleMovement(command, player, level.MaxPosition());
 
-			
-		}
-
-		if (command == 's' || command == 'S')
-		{
-			player.SlowDown();
-			player.MoveForward(level.MaxPosition());
-		}
 		std::system("cls");
 
 		std::cout << "Player position: " << player.GetPositionX() << std::endl;

@@ -1,4 +1,6 @@
 #pragma once
+#include "Player.h"
+
 
 
 class Game
@@ -13,4 +15,6 @@ private:
 	
 	void ShowInstructions();
 	void StartGame();
+	void HandleMovement(char command, Player& 
+		player, float maxPosition);
 };
