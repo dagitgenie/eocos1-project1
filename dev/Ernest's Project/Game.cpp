@@ -21,6 +21,17 @@ void Game::HandleMovement(char command, Player&
 	}
 }
 
+void Game::DisplayGameState(Player& player, Level& level)
+{
+	std::system("cls");
+
+	std::cout << "Player position: " << player.GetPositionX() << std::endl;
+
+	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
+
+	std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
+}
+
 void Game::StartGame()
 {
 	std::cout << "Starting Coin Rush!" << std::endl;
@@ -47,19 +58,13 @@ void Game::StartGame()
 
 		HandleMovement(command, player, level.MaxPosition());
 
-		std::system("cls");
-
-		std::cout << "Player position: " << player.GetPositionX() << std::endl;
-
 		int newColumn = 1 + static_cast<int>(player.GetPositionX());
 
 		int collectedThisMove = level.CollectCoinsBetween(previousColumn, newColumn);
 
 		player.AddCoins(collectedThisMove);
 		
-		level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
-
-		std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
+		DisplayGameState( player, level);
 
 		if (player.GetPositionX() >= level.MaxPosition())
 		{
@@ -138,7 +143,5 @@ void Game::ShowMenu()
 		}
 
 	}
-
-
 
 }

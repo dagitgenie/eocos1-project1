@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include "Level.h"
 
 
 
@@ -17,4 +18,5 @@ private:
 	void StartGame();
 	void HandleMovement(char command, Player& 
 		player, float maxPosition);
+	void DisplayGameState(Player& player, Level& level);
 };
