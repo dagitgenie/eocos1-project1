@@ -1,13 +1,20 @@
 #pragma once
 #include <string>
+#include <vector>
 
 
 class Level
 {
 private:
 
-	std::string middleRow = "#S      O      O      F#";
-	//this will allow my level to remmber when a coin is collected so coins don't keep popping up
+	
+
+	std::vector<std::string> levelMap =
+	{
+		 "########################",
+		 "#S      O      O      F#",
+		 "########################"
+	};
 
 public:
 
