@@ -58,13 +58,12 @@ void Game::StartGame()
 
 		HandleMovement(command, player, level.MaxPosition());
 
-		int newColumn = 1 + static_cast<int>(player.GetPositionX());
 
-		int collectedThisMove = level.CollectCoinsBetween(previousColumn, newColumn);
+		level.CollectCoinsBetween(previousColumn, &player);
 
-		player.AddCoins(collectedThisMove);
 		
 		DisplayGameState( player, level);
+
 
 		if (player.GetPositionX() >= level.MaxPosition())
 		{

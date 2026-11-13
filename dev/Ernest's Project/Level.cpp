@@ -30,11 +30,18 @@ float Level::MaxPosition()
 }
 
 
-int Level::CollectCoinsBetween(int previousColumn, int newColumn)
+void Level::CollectCoinsBetween(int previousColumn, Player* player)
 
+{	
+	if (player == nullptr)
+	{
+		return;
+	}
 
-{
+	int newColumn = 1 + static_cast<int>(player->GetPositionX());
+
 	int collectedThisMove = 0;
+	
 	for (int column = previousColumn; column <= newColumn; column++)
 	{
 		if (column >= 0 && column < static_cast<int>(levelMap[1].size()))
@@ -48,5 +55,5 @@ int Level::CollectCoinsBetween(int previousColumn, int newColumn)
 
 	}
 
-	return collectedThisMove;
+	player->AddCoins(collectedThisMove);
 }
