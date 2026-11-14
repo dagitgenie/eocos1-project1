@@ -46,6 +46,48 @@ void Player::MoveForward(float maxPosition)
 	
 }
 
+void Player::Jump()
+{
+	if (jumpStep == 0 && positionY == 3)
+	{
+		jumpStep = 1;
+	}
+}
+
+void Player::UpdateJump()
+{
+	if (jumpStep == 0)
+	{
+		return;
+	}
+	if (jumpStep == 1)
+	{
+		positionY = 2;
+	}
+	else if (jumpStep == 2)
+	{
+		positionY = 1;
+	}
+	else if (jumpStep == 3)
+	{
+		positionY = 2;
+	}
+	else if (jumpStep == 4)
+	{
+		positionY = 3;
+		jumpStep = 0;
+		return;
+	}
+
+	jumpStep++;
+}
+
+int Player::GetPositionY()
+{
+	return positionY;
+}
+
+
 float Player::GetPositionX()
 {
 	return positionX;

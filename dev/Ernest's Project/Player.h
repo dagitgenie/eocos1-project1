@@ -11,9 +11,14 @@ public:
 	void SpeedUp();
 	void Stop();
 	void MoveForward(float maxPosition);
+
 	float GetPositionX();
 	void AddCoins(int amount);
 	int GetCoinsCollected() const;
+
+	void Jump();
+	void UpdateJump();
+	int GetPositionY();
 
 
 private:
@@ -25,7 +30,9 @@ private:
 	float deceleration = -0.5f;
 	float maxSpeed = 3.0f;
 	int coinsCollected = 0;
-	
+
+	int positionY = 3;
+	int jumpStep = 0;
 
 };
 

@@ -69,7 +69,16 @@ void Game::StartGame()
 				break;
 			}
 
-			HandleMovementInput(command, player);
+			if (command == ' ')
+			{
+				player.Jump();
+			}
+
+			else
+			{
+				HandleMovementInput(command, player);
+			}
+			
 		}
 		
 		
