@@ -62,7 +62,31 @@ These changes expand the original Coin Rush prototype and provide a foundation f
 
 ### Week 3
 
-Stay tuned, this stand up is coming soon...
+**Week 3 End-of-Week Stand-Up – Coin Rush**
+
+**Overview**
+
+This week I mainly focused on improving my code instead of adding new features. I cleaned up my Game class, changed how my Level class stores its map, and worked on getting my classes to communicate better.
+
+**Improvements**
+
+I separated player movement and the game display into their own methods so my StartGame method doesn't have to handle everything. Beyond that, I updated my Level class to use a vector instead of one string. I also made use of a pointer so the Level class can communicate directly with my Player class when the player collects coins.
+
+**Challenges**
+
+One challenge was making all my adjustments without breaking the game. Mainly, I wanted to make sure things didn't stop functioning the way I planned. The refactoring worked out, but I had to find all the places that needed changing. Since there wasn't too much code, it wasn't as challenging as it could have been.
+
+**Feedback**
+
+Several things were pointed out that needed to be corrected, including meaningful vector and pointer usage, better input validation, and moving a method into the correct file. I worked on these areas this week and got things fine-tuned.
+
+**Accomplishments**
+
+I feel like I can follow along better with how classes communicate using references and pointers to existing objects. Organizing my code was a bit confusing at first, but I feel more comfortable when I break things down instead of having everything in one place.
+
+**Next Steps**
+
+My Week 4 plans are to focus on adding obstacle and wall collision detection. I also want to continue improving movement. The goal is to get Coin Rush to feel more like an actual game while keeping my code organized.
 
 ### Week 4
 
