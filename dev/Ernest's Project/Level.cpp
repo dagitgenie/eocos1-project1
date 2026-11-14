@@ -24,7 +24,7 @@ void Level::DrawLevel(int playerColumn)
 
 float Level::MaxPosition()
 {
-	const float maxPosition = 21.0f;
+	const float maxPosition = 40.0f;
 	return maxPosition;
 
 	
@@ -45,12 +45,12 @@ void Level::CollectCoinsBetween(int previousColumn, Player* player)
 	
 	for (int column = previousColumn; column <= newColumn; column++)
 	{
-		if (column >= 0 && column < static_cast<int>(levelMap[1].size()))
+		if (column >= 0 && column < static_cast<int>(levelMap[3].size()))
 		{
-			if (levelMap[1][column] == 'O')
+			if (levelMap[3][column] == 'O')
 			{
 				collectedThisMove++;
-				levelMap[1][column] = ' ';
+				levelMap[3][column] = ' ';
 			}
 		}
 
