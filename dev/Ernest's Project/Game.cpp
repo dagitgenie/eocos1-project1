@@ -1,29 +1,35 @@
 #include <iostream>
 #include <cstdlib>
 #include <limits>
+#include <conio.h>
+#include <Windows.h>
 
 #include "Game.h"
 #include "Player.h"
 #include "Level.h"
 
-void Game::HandleMovement(char command, Player&
-	player, float maxPosition)
+
+void Game::HandleMovementInput(char command, Player&
+	player)
 {
 	if (command == 'w' || command == 'W')
 	{
 		player.SpeedUp();
-		player.MoveForward(maxPosition);
+		
 	}
 	else if (command == 's' || command == 'S')
 	{
 		player.SlowDown();
-		player.MoveForward(maxPosition);
+		
 	}
 }
 
 void Game::DisplayGameState(Player& player, Level& level)
 {
-	std::system("cls");
+	COORD cursorPosition = { 0, 0 };
+
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), 
+		cursorPosition);
 
 	std::cout << "Player position: " << player.GetPositionX() << std::endl;
 
@@ -41,26 +47,40 @@ void Game::StartGame()
 	Player player;
 	Level level;
 	
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	CONSOLE_CURSOR_INFO cursorInfo;
+	GetConsoleCursorInfo(consoleHandle, &cursorInfo);
+
+	cursorInfo.bVisible = FALSE;
+	SetConsoleCursorInfo(consoleHandle, &cursorInfo);
+
 	char command = ' ';
 	
 
 	while (command != 'q' && command != 'Q')
 	{	
-		std::cout << "Eneter command: ";
-		std::cin >> command;
-		
-		if (command == 'q' || command == 'Q')
+		if (_kbhit())
 		{
-			break;
+			command = _getch();
+
+			if (command == 'q' || command == 'Q')
+			{
+				break;
+			}
+
+			HandleMovementInput(command, player);
 		}
+		
+		
 
 		int previousColumn = 1 + static_cast<int>(player.GetPositionX());
 
-		HandleMovement(command, player, level.MaxPosition());
+		
 
+		player.MoveForward(level.MaxPosition());
 
 		level.CollectCoinsBetween(previousColumn, &player);
-
 		
 		DisplayGameState( player, level);
 
@@ -70,8 +90,11 @@ void Game::StartGame()
 			std::cout << "You've reached the finish!!" << std::endl;
 			break;
 		}
+
+		Sleep(150);
 	}
-	
+	cursorInfo.bVisible = TRUE;
+	SetConsoleCursorInfo(consoleHandle, &cursorInfo);
 }
 
 
@@ -87,17 +110,18 @@ void Game::ShowInstructions()
 
 void Game::ShowMenu()
 {
-	std::cout << "COIN RUSH" << std::endl;
-	std::cout << "1. Start Game" << std::endl;
-	std::cout << "2. Instructions" << std::endl;
-	std::cout << "3. Exit" << std::endl;
+	
 
 	int choice = 0;
 
 	std::string input;
 
 	while (choice != 3)
-	{
+	{	
+		std::cout << "COIN RUSH" << std::endl;
+		std::cout << "1. Start Game" << std::endl;
+		std::cout << "2. Instructions" << std::endl;
+		std::cout << "3. Exit" << std::endl;
 		std::cout << "Enter your choice" << std::endl;
 		std::getline(std::cin, input);
 
@@ -126,7 +150,6 @@ void Game::ShowMenu()
 		if (choice == 1)
 		{
 			StartGame();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 		else if (choice == 2)
 		{

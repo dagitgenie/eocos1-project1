@@ -16,7 +16,7 @@ private:
 	
 	void ShowInstructions();
 	void StartGame();
-	void HandleMovement(char command, Player& 
-		player, float maxPosition);
+	void HandleMovementInput(char command, Player& 
+		player);
 	void DisplayGameState(Player& player, Level& level);
 };
