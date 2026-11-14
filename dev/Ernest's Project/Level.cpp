@@ -7,17 +7,18 @@
 // second the displayrow shows the player without changing the store map.
 void Level::DrawLevel(int playerColumn)
 {
-
-	std::string displayRow = levelMap[1];
-	if (playerColumn >= 1 && playerColumn < static_cast<int>(displayRow.size()) - 1)
+	for (int row = 0; row < static_cast<int>(levelMap.size()); row++)
 	{
-		displayRow[playerColumn] = 'P';
-	}
+		std::string displayRow = levelMap[row];
+		if (row == 3 && playerColumn >= 1 && playerColumn < static_cast<int>(displayRow.size()) - 1)
+		{
+			displayRow[playerColumn] = 'P';
+		}
 	
 
-	std::cout << levelMap[0] << std::endl;
-	std::cout << displayRow << std::endl;
-	std::cout << levelMap[2] << std::endl;
+		std::cout << displayRow << std::endl;
+	}
+	
 }
 
 
