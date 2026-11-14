@@ -24,7 +24,7 @@ private:
 
 public:
 
-	void DrawLevel(int playerColumn);
+	void DrawLevel(int playerColumn, int playerRow);
 	
 	float MaxPosition();
 

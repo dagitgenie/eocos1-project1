@@ -33,7 +33,7 @@ void Game::DisplayGameState(Player& player, Level& level)
 
 	std::cout << "Player position: " << player.GetPositionX() << std::endl;
 
-	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()));
+	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()), player.GetPositionY());
 
 	std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
 }
@@ -88,6 +88,8 @@ void Game::StartGame()
 		
 
 		player.MoveForward(level.MaxPosition());
+
+		player.UpdateJump();
 
 		level.CollectCoinsBetween(previousColumn, &player);
 		

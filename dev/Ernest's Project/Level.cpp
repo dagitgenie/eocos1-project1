@@ -5,12 +5,13 @@
 
 //I move the origninal middleRow to private , this i did so that drawLevel doesnt keep redrawing the coins the player collects, everytime the funvtion runs. Instead it can access it directly when it need, also hy i didnt use a getter. 
 // second the displayrow shows the player without changing the store map.
-void Level::DrawLevel(int playerColumn)
+void Level::DrawLevel(int playerColumn, int playerRow)
 {
 	for (int row = 0; row < static_cast<int>(levelMap.size()); row++)
 	{
 		std::string displayRow = levelMap[row];
-		if (row == 3 && playerColumn >= 1 && playerColumn < static_cast<int>(displayRow.size()) - 1)
+
+		if (row == playerRow && playerColumn >= 1 && playerColumn < static_cast<int>(displayRow.size()) - 1)
 		{
 			displayRow[playerColumn] = 'P';
 		}
