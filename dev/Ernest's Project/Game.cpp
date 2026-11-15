@@ -36,6 +36,7 @@ void Game::DisplayGameState(Player& player, Level& level)
 	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()), player.GetPositionY());
 
 	std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
+	std::cout << "Lives Remaining: " << player.GetLives() << std::endl;
 }
 
 void Game::StartGame()
@@ -114,16 +115,30 @@ void Game::StartGame()
 	
 		level.CollectCoinsBetween(previousColumn, &player);
 		
-		DisplayGameState( player, level);
+		
 
 		if (hitObstacle)
-		{
-			std::cout << "You crashed!" << std::endl;
-			break;
+		{	
+			player.LoseLife();
+
+			if (player.GetLives() > 0)
+			{
+				player.Respawn();	
+			}
 		}
+		
+		DisplayGameState( player, level);
+
+		if (hitObstacle && player.GetLives() == 0)
+		{
+			std::cout << "Game Over!" << std::endl;
+			break;
+
+		}
+		
 		if (player.GetPositionX() >= level.MaxPosition())
 		{
-			std::cout << "You've reached the finish!!" << std::endl;
+			std::cout << "You've reached the finish!" << std::endl;
 			break;
 		}
 

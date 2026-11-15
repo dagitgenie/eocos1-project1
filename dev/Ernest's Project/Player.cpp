@@ -110,3 +110,23 @@ int Player::GetCoinsCollected() const
 	return coinsCollected;
 }
 
+void Player::LoseLife()
+{
+	if (lives > 0)
+	{
+		lives--;
+	}
+}
+
+int Player::GetLives() const
+{
+	return lives;
+}
+
+void Player::Respawn()
+{
+	positionX = 0.0f;
+	speedX = 0.0f;
+	positionY = 3;
+	jumpStep = 0;
+}
