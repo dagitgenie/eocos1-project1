@@ -88,16 +88,30 @@ void Game::StartGame()
 		
 
 		player.MoveForward(level.MaxPosition());
+		player.UpdateJump();
+		
+		int newColumn = 1 + static_cast<int>(player.GetPositionX());
+		
+		int wallColumn = level.FindWallBetween(
+			previousColumn,
+			newColumn,
+			player.GetPositionY()
+		);
 
-		int newColumn = 1 + static_cast <int> (player.GetPositionX());
+		if (wallColumn != -1)
+		{
+			player.StopAt(static_cast<float>(wallColumn - 2));
+
+			newColumn = 1 + static_cast<int>(player.GetPositionX());
+		}
+		
 		bool hitObstacle = level.HitObstacleBetween(
 			previousColumn,
 			newColumn,
 			player.GetPositionY()
 		);
 
-		player.UpdateJump();
-
+	
 		level.CollectCoinsBetween(previousColumn, &player);
 		
 		DisplayGameState( player, level);
