@@ -1,21 +1,232 @@
 #pragma once
 #include <string>
+#include <vector>
+
+#include "Player.h"
+
+
 
 
 class Level
 {
 private:
 
-	std::string middleRow = "#S      O      O      F#";
-	//this will allow my level to remmber when a coin is collected so coins don't keep popping up
+	
+
+	std::vector<std::string> levelMap =
+	{
+		 "###########################################",
+		 "#                    #                    #",
+		 "#                    #                    #",
+		 "#S      O    X    O     O  #     O    O  F#",
+		 "###########################################"
+	};
+
+	
 
 public:
 
-	void DrawLevel(int playerColumn);
+	void DrawLevel(int playerColumn, int playerRow);
 	
 	float MaxPosition();
 
-	int CollectCoinsBetween(int previousColumn, int newColumn);
-	//prev will tell me where player was and new will show me where he ends up
+	void CollectCoinsBetween(int previousColumn, Player* player);
 	
+	bool HitObstacleBetween(int previousColumn, int newColumn, int playerRow);
+
+	int FindWallBetween(int previousColumn, int newColumn, int playerRow);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

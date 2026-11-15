@@ -46,33 +46,59 @@ void Player::MoveForward(float maxPosition)
 	
 }
 
+void Player::StopAt(float safePosition)
+{
+	positionX = safePosition;
+	speedX = 0.0f;
+}
+
+void Player::Jump()
+{
+	if (jumpStep == 0 && positionY == 3)
+	{
+		jumpStep = 1;
+	}
+}
+
+void Player::UpdateJump()
+{
+	if (jumpStep == 0)
+	{
+		return;
+	}
+	if (jumpStep == 1)
+	{
+		positionY = 2;
+	}
+	else if (jumpStep == 2)
+	{
+		positionY = 1;
+	}
+	else if (jumpStep == 3)
+	{
+		positionY = 2;
+	}
+	else if (jumpStep == 4)
+	{
+		positionY = 3;
+		jumpStep = 0;
+		return;
+	}
+
+	jumpStep++;
+}
+
+int Player::GetPositionY()
+{
+	return positionY;
+}
+
+
 float Player::GetPositionX()
 {
 	return positionX;
 }
 
-
-
-int Level::CollectCoinsBetween(int previousColumn, int newColumn)
-
-
-{	
-	int collectedThisMove = 0;
-	for (int column = previousColumn; column <= newColumn; column++)
-	{	
-		if (column >= 0 && column < static_cast<int>(middleRow.size()))
-		{
-			if (middleRow[column] == 'O')
-			{
-			collectedThisMove++;
-			middleRow[column] = ' ';
-			}
-		}
-			
-	}
-
-	return collectedThisMove;
-}
 
 void Player::AddCoins(int amount)
 {
@@ -84,3 +110,23 @@ int Player::GetCoinsCollected() const
 	return coinsCollected;
 }
 
+void Player::LoseLife()
+{
+	if (lives > 0)
+	{
+		lives--;
+	}
+}
+
+int Player::GetLives() const
+{
+	return lives;
+}
+
+void Player::Respawn()
+{
+	positionX = 0.0f;
+	speedX = 0.0f;
+	positionY = 3;
+	jumpStep = 0;
+}
