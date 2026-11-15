@@ -59,3 +59,25 @@ void Level::CollectCoinsBetween(int previousColumn, Player* player)
 
 	player->AddCoins(collectedThisMove);
 }
+
+bool Level::HitObstacleBetween(int previousColumn, int newColumn, int playerRow)
+{
+	if (playerRow != 3)
+	{
+		return false;
+	}
+
+	for (int column = previousColumn; column <= newColumn; column++)
+	{
+		if (column >= 0 && column < static_cast<int>(levelMap[3].size()))
+		{
+			if (levelMap[3][column] == 'X')
+			{
+				return true;
+			}
+		}
+	}
+	
+	return false;
+}	
+

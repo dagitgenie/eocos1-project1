@@ -89,13 +89,24 @@ void Game::StartGame()
 
 		player.MoveForward(level.MaxPosition());
 
+		int newColumn = 1 + static_cast <int> (player.GetPositionX());
+		bool hitObstacle = level.HitObstacleBetween(
+			previousColumn,
+			newColumn,
+			player.GetPositionY()
+		);
+
 		player.UpdateJump();
 
 		level.CollectCoinsBetween(previousColumn, &player);
 		
 		DisplayGameState( player, level);
 
-
+		if (hitObstacle)
+		{
+			std::cout << "You crashed!" << std::endl;
+			break;
+		}
 		if (player.GetPositionX() >= level.MaxPosition())
 		{
 			std::cout << "You've reached the finish!!" << std::endl;

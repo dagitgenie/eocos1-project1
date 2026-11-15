@@ -22,6 +22,8 @@ private:
 		 "###########################################"
 	};
 
+	
+
 public:
 
 	void DrawLevel(int playerColumn, int playerRow);
@@ -30,7 +32,7 @@ public:
 
 	void CollectCoinsBetween(int previousColumn, Player* player);
 	
-	
+	bool HitObstacleBetween(int previousColumn, int newColumn, int playerRow);
 };
 
 
