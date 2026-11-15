@@ -18,5 +18,5 @@ private:
 	void StartGame();
 	void HandleMovementInput(char command, Player& 
 		player);
-	void DisplayGameState(Player& player, Level& level);
+	void DisplayGameState(Player& player, Level& level, int timeRemaining);
 };

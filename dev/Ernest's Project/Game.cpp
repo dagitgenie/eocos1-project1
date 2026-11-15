@@ -3,6 +3,7 @@
 #include <limits>
 #include <conio.h>
 #include <Windows.h>
+#include <chrono>
 
 #include "Game.h"
 #include "Player.h"
@@ -24,30 +25,35 @@ void Game::HandleMovementInput(char command, Player&
 	}
 }
 
-void Game::DisplayGameState(Player& player, Level& level)
+void Game::DisplayGameState(Player& player, Level& level, int timeRemaning)
 {
 	COORD cursorPosition = { 0, 0 };
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), 
 		cursorPosition);
 
+	std::cout << "COIN RUSH | W = Speed Up | S = Slow Down | SPACE = Jump | Q = Quit" << std::endl;
 	std::cout << "Player position: " << player.GetPositionX() << std::endl;
 
 	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()), player.GetPositionY());
 
 	std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
 	std::cout << "Lives Remaining: " << player.GetLives() << std::endl;
+	std::cout << "Time Remaining: " << timeRemaning << " seconds" << std::endl;
 }
 
 void Game::StartGame()
-{
-	std::cout << "Starting Coin Rush!" << std::endl;
-	std::cout << "W = Speed Up | S = Slow Down | Q = Quit\n";
+{	
+	std::system("cls");
 	
 	
 	Player player;
 	Level level;
 	
+	const int timeLimitSeconds = 60;
+	bool timerStarted = false;
+	std::chrono::steady_clock::time_point startTime;
+
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	CONSOLE_CURSOR_INFO cursorInfo;
@@ -70,6 +76,12 @@ void Game::StartGame()
 				break;
 			}
 
+			if (!timerStarted && (command == 'w' || command == 'W'))
+			{
+				startTime = std::chrono::steady_clock::now();
+				timerStarted = true;
+			}
+
 			if (command == ' ')
 			{
 				player.Jump();
@@ -82,7 +94,21 @@ void Game::StartGame()
 			
 		}
 		
-		
+		int timeRemaining = timeLimitSeconds;
+
+		if (timerStarted)
+		{
+			auto currentTime = std::chrono::steady_clock::now();
+			auto elapsedSeconds = std::chrono::duration_cast<std::chrono::seconds>(
+				currentTime - startTime).count();
+			timeRemaining = timeLimitSeconds - static_cast<int>(elapsedSeconds);
+
+			if (timeRemaining <= 0)
+			{
+				std::cout << "Time's Up!" << std::endl;
+				break;
+			}
+		}
 
 		int previousColumn = 1 + static_cast<int>(player.GetPositionX());
 
@@ -127,7 +153,7 @@ void Game::StartGame()
 			}
 		}
 		
-		DisplayGameState( player, level);
+		DisplayGameState( player, level, timeRemaining);
 
 		if (hitObstacle && player.GetLives() == 0)
 		{
