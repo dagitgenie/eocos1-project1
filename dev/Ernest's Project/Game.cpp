@@ -42,7 +42,35 @@ void Game::DisplayGameState(Player& player, Level& level, int timeRemaning)
 	std::cout << "Time Remaining: " << timeRemaning << " seconds" << std::endl;
 }
 
-void Game::StartGame()
+int Game::ShowResults(const Player& player, const std::string& result)
+{	
+	std::cout << "\n===== " << result << " =====\n";
+
+	std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
+
+	std::cout << "Lives Remaining: " << player.GetLives() << std::endl;
+
+	std::cout << "\n1. Play Again\n" << std::endl;
+	std::cout << "2. Main Menu\n" << std::endl;
+	std::cout << "3. Exit Game\n" << std::endl;
+
+	while (true)
+	{
+		std::cout << "Enter your choce (1-3): ";
+
+		char choice = _getch();
+		std::cout << choice << std::endl;
+
+		if (choice >= '1' && choice <= '3')
+		{
+			return choice - '0';
+		}
+
+		std::cout << "Invalid choice. Please select 1-3.|n";
+	}
+}
+	
+int Game::StartGame()
 {	
 	std::system("cls");
 	
@@ -63,6 +91,8 @@ void Game::StartGame()
 	SetConsoleCursorInfo(consoleHandle, &cursorInfo);
 
 	char command = ' ';
+
+	std::string result = "";
 	
 
 	while (command != 'q' && command != 'Q')
@@ -105,7 +135,7 @@ void Game::StartGame()
 
 			if (timeRemaining <= 0)
 			{
-				std::cout << "Time's Up!" << std::endl;
+				result = "Time's Up!";
 				break;
 			}
 		}
@@ -157,14 +187,14 @@ void Game::StartGame()
 
 		if (hitObstacle && player.GetLives() == 0)
 		{
-			std::cout << "Game Over!" << std::endl;
+			result = "Game Over!";
 			break;
 
 		}
 		
 		if (player.GetPositionX() >= level.MaxPosition())
 		{
-			std::cout << "You've reached the finish!" << std::endl;
+			result =  "You've reached the finish!";
 			break;
 		}
 
@@ -172,6 +202,12 @@ void Game::StartGame()
 	}
 	cursorInfo.bVisible = TRUE;
 	SetConsoleCursorInfo(consoleHandle, &cursorInfo);
+
+	if (result.empty())
+	{
+		return 2;
+	}
+	return ShowResults(player, result);
 }
 
 
@@ -226,12 +262,25 @@ void Game::ShowMenu()
 		}
 		if (choice == 1)
 		{
-			StartGame();
+			int resultChoice = StartGame();
+			while (resultChoice == 1)
+			{
+				resultChoice = StartGame();
+
+			}
+
+			if (resultChoice == 3)
+			{
+				choice = 3;
+				std::cout << "Exiting Coin Rush" << std::endl;
+			}
+
 		}
 		else if (choice == 2)
 		{
 			ShowInstructions();
 		}
+		
 		else if (choice == 3)
 		{
 			std::cout << "Exiting Coin Rush" << std::endl;

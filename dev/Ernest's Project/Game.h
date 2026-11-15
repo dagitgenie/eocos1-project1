@@ -1,6 +1,9 @@
 #pragma once
+#include <string>
+
 #include "Player.h"
 #include "Level.h"
+
 
 
 
@@ -15,8 +18,9 @@ public:
 private:
 	
 	void ShowInstructions();
-	void StartGame();
+	int StartGame();
 	void HandleMovementInput(char command, Player& 
 		player);
 	void DisplayGameState(Player& player, Level& level, int timeRemaining);
+	int ShowResults(const Player& player, const std::string& result);
 };
