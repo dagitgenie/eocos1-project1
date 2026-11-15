@@ -19,6 +19,7 @@ public:
 	void Jump();
 	void UpdateJump();
 	int GetPositionY();
+	void StopAt(float safePosition);
 
 
 private:

@@ -33,6 +33,8 @@ public:
 	void CollectCoinsBetween(int previousColumn, Player* player);
 	
 	bool HitObstacleBetween(int previousColumn, int newColumn, int playerRow);
+
+	int FindWallBetween(int previousColumn, int newColumn, int playerRow);
 };
 
 

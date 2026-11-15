@@ -81,3 +81,24 @@ bool Level::HitObstacleBetween(int previousColumn, int newColumn, int playerRow)
 	return false;
 }	
 
+int Level::FindWallBetween(int previousColumn, int newColumn, int playerRow)
+{
+	if (playerRow < 0 || playerRow >= static_cast<int>(levelMap.size()))
+	{
+		return -1;
+	}
+
+	for (int column = previousColumn; column <= newColumn; column++)
+	{
+		if (column >= 0 && column < static_cast<int>(levelMap[playerRow].size()))
+		{
+			if (levelMap[playerRow][column] == '#')
+			{
+				return column;
+			}
+		}
+	}
+	
+	return -1;
+}	
+

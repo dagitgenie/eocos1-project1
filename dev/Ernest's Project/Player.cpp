@@ -46,6 +46,12 @@ void Player::MoveForward(float maxPosition)
 	
 }
 
+void Player::StopAt(float safePosition)
+{
+	positionX = safePosition;
+	speedX = 0.0f;
+}
+
 void Player::Jump()
 {
 	if (jumpStep == 0 && positionY == 3)
