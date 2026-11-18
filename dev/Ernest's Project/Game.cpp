@@ -66,7 +66,7 @@ int Game::ShowResults(const Player& player, const std::string& result)
 			return choice - '0';
 		}
 
-		std::cout << "Invalid choice. Please select 1-3.|n";
+		std::cout << "Invalid choice. Please select 1-3.\n";
 	}
 }
 	
@@ -218,12 +218,14 @@ int Game::StartGame()
 void Game::ShowInstructions()
 {	
 	std::cout << "===== Please read instructions =====" << std::endl;
-	std::cout << "Move forward through the course." << std::endl;
-	std::cout << "Press spacebar to jump over obstacles and collect coins." << std::endl;
-	std::cout << "Build speed gradually and slow down when needed." << std::endl;
-	std::cout << "You cannot turn around, so plan your jumps." << std::endl;
-	std::cout << "Reach the finish before the time runs out." << std::endl;
+	std::cout << "-Move forward through the course and collect coins." << std::endl;
+	std::cout << "-Press spacebar to jump over obstacles." << std::endl;
+	std::cout << "-Build speed gradually and slow down when needed." << std::endl;
+	std::cout << "-You cannot turn around, so plan your jumps." << std::endl;
+	std::cout << "-Reach the finish before the time runs out." << std::endl;
 }
+
+
 
 void Game::ShowMenu()
 {
@@ -235,12 +237,14 @@ void Game::ShowMenu()
 
 	while (choice != 3)
 	{	
-		std::cout << "COIN RUSH" << std::endl;
+		std::cout << "Welcome To Coin Rush!" << std::endl;
+		std::cout << "\nMenu" << std::endl;
 		std::cout << "1. Start Game" << std::endl;
 		std::cout << "2. Instructions" << std::endl;
-		std::cout << "3. Exit" << std::endl;
+		std::cout << "3. Exit\n" << std::endl;
 		std::cout << "Enter your choice" << std::endl;
 		std::getline(std::cin, input);
+		std::cout << std::endl;
 
 		try
 		{
@@ -273,6 +277,8 @@ void Game::ShowMenu()
 
 			}
 
+			std::system("cls");
+
 			if (resultChoice == 3)
 			{
 				choice = 3;
@@ -285,6 +291,7 @@ void Game::ShowMenu()
 			ShowInstructions();
 		}
 		
+
 		else if (choice == 3)
 		{
 			std::cout << "Exiting Coin Rush" << std::endl;
