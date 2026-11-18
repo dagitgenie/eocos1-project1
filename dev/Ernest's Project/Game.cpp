@@ -181,6 +181,10 @@ int Game::StartGame()
 			{
 				player.Respawn();	
 			}
+			else
+			{	//Keep the player at the last safe position after collision on a Game Over
+				player.StopAt(static_cast<float>(previousColumn - 1));
+			}
 		}
 		
 		DisplayGameState( player, level, timeRemaining);
