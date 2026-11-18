@@ -40,6 +40,11 @@ void Level::CollectCoinsBetween(int previousColumn, Player* player)
 		return;
 	}
 
+	if (player->GetPositionY() != 3)
+	{
+		return;
+	}
+
 	int newColumn = 1 + static_cast<int>(player->GetPositionX());
 
 	int collectedThisMove = 0;
