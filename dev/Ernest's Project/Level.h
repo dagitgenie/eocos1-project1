@@ -30,7 +30,7 @@ public:
 	
 	float MaxPosition();
 
-	void CollectCoinsBetween(int previousColumn, Player* player);
+	void CollectCoinsBetween(int previousColumn, Player& player);
 	
 	bool HitObstacleBetween(int previousColumn, int newColumn, int playerRow);
 

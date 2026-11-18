@@ -171,7 +171,7 @@ int Game::StartGame()
 		);
 
 	
-		level.CollectCoinsBetween(previousColumn, &player);
+		level.CollectCoinsBetween(previousColumn, player);
 		
 		
 

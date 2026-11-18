@@ -32,20 +32,16 @@ float Level::MaxPosition()
 }
 
 
-void Level::CollectCoinsBetween(int previousColumn, Player* player)
+void Level::CollectCoinsBetween(int previousColumn, Player& player)
 
 {	
-	if (player == nullptr)
+
+	if (player.GetPositionY() != 3)
 	{
 		return;
 	}
 
-	if (player->GetPositionY() != 3)
-	{
-		return;
-	}
-
-	int newColumn = 1 + static_cast<int>(player->GetPositionX());
+	int newColumn = 1 + static_cast<int>(player.GetPositionX());
 
 	int collectedThisMove = 0;
 	
@@ -62,7 +58,7 @@ void Level::CollectCoinsBetween(int previousColumn, Player* player)
 
 	}
 
-	player->AddCoins(collectedThisMove);
+	player.AddCoins(collectedThisMove);
 }
 
 bool Level::HitObstacleBetween(int previousColumn, int newColumn, int playerRow)
