@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <Windows.h>
 #include <chrono>
+#include <fstream>
 
 #include "Game.h"
 #include "Player.h"
@@ -38,6 +39,7 @@ void Game::DisplayGameState(Player& player, Level& level, int timeRemaning)
 	level.DrawLevel(1 + static_cast<int>(player.GetPositionX()), player.GetPositionY());
 
 	std::cout << "Coins Collected: " << player.GetCoinsCollected() << std::endl;
+	std::cout << "High Score: " << highScore << std::endl;
 	std::cout << "Lives Remaining: " << player.GetLives() << std::endl;
 	std::cout << "Time Remaining: " << timeRemaning << " seconds" << std::endl;
 }
@@ -207,6 +209,12 @@ int Game::StartGame()
 	cursorInfo.bVisible = TRUE;
 	SetConsoleCursorInfo(consoleHandle, &cursorInfo);
 
+	if (player.GetCoinsCollected() > highScore)
+	{
+		highScore = player.GetCoinsCollected();
+		SaveHighScore();
+	}
+
 	if (result.empty())
 	{
 		return 2;
@@ -225,11 +233,37 @@ void Game::ShowInstructions()
 	std::cout << "-Reach the finish before the time runs out." << std::endl;
 }
 
+void Game::LoadHighScore()
+{
+	std::ifstream file("highscore.txt");
 
+	int savedScore = 0;
+
+	if (file >> savedScore && savedScore >= 0)
+	{
+		highScore = savedScore;
+	}
+}
+
+void Game::SaveHighScore()
+{
+	std::ofstream file("highscore.txt");
+
+	if (file.is_open())
+	{
+		file << highScore;
+	}
+}
+
+void Game::ResetHighScore()
+{
+	highScore = 0;
+	SaveHighScore();
+}
 
 void Game::ShowMenu()
 {
-	
+	LoadHighScore();
 
 	int choice = 0;
 
@@ -241,7 +275,8 @@ void Game::ShowMenu()
 		std::cout << "\nMenu" << std::endl;
 		std::cout << "1. Start Game" << std::endl;
 		std::cout << "2. Instructions" << std::endl;
-		std::cout << "3. Exit\n" << std::endl;
+		std::cout << "3. Exit" << std::endl;
+		std::cout << "4. Reset High Score\n" << std::endl;
 		std::cout << "Enter your choice" << std::endl;
 		std::getline(std::cin, input);
 		std::cout << std::endl;
@@ -254,13 +289,13 @@ void Game::ShowMenu()
 
 			if (position != input.length())
 			{
-				std::cout << "Invalid choice. Pleae select 1-3.\n";
+				std::cout << "Invalid choice. Please select 1-4.\n";
 				continue;
 			}
 		}
 		catch (const std::invalid_argument&)
 		{
-			std::cout << "Invalid choice. Please select 1-3.\n";
+			std::cout << "Invalid choice. Please select 1-4.\n";
 			continue;
 		}
 		catch (const std::out_of_range&)
@@ -291,6 +326,23 @@ void Game::ShowMenu()
 			ShowInstructions();
 		}
 		
+		else if (choice == 4)
+		{
+			std::string confirmation;
+
+			std::cout << "Are you sure you want to reset your high score? (Y/N): ";
+			std::getline(std::cin, confirmation);
+
+			if (confirmation == "Y" || confirmation == "y")
+			{
+				ResetHighScore();
+				std::cout << "High score has beeen reset.\n";
+			}
+			else
+			{
+				std::cout << "High score reset canceled.\n";
+			}
+		}
 
 		else if (choice == 3)
 		{
@@ -298,7 +350,7 @@ void Game::ShowMenu()
 		}
 		else
 		{
-			std::cout << "Invalid choice. Please select 1-3." << std::endl;
+			std::cout << "Invalid choice. Please select 1-4." << std::endl;
 		}
 
 	}
