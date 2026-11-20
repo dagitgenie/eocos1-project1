@@ -16,8 +16,8 @@ private:
 	std::vector<std::string> levelMap =
 	{
 		 "###########################################",
-		 "#                    #                    #",
-		 "#                    #                    #",
+		 "#                    #                   F#",
+		 "#                    #                   F#",
 		 "#S      O    X    O     O  #     O    O  F#",
 		 "###########################################"
 	};
@@ -30,7 +30,7 @@ public:
 	
 	float MaxPosition();
 
-	void CollectCoinsBetween(int previousColumn, Player* player);
+	void CollectCoinsBetween(int previousColumn, Player& player);
 	
 	bool HitObstacleBetween(int previousColumn, int newColumn, int playerRow);
 

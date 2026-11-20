@@ -8,8 +8,10 @@
 
 
 void Player::SlowDown()
-{	
+{	//deceleration is negative, so adding it takes away from speed.
 	speedX += deceleration;
+
+	//Stop players from moving backward.
 	if (speedX < 0)
 	{
 		speedX = 0.0f;

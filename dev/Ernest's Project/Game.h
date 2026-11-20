@@ -16,7 +16,13 @@ public:
 	
 
 private:
-	
+
+	int highScore = 0;
+
+	void LoadHighScore();
+	void SaveHighScore();
+	void ResetHighScore();
+
 	void ShowInstructions();
 	int StartGame();
 	void HandleMovementInput(char command, Player& 

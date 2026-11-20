@@ -90,4 +90,23 @@ My Week 4 plans are to focus on adding obstacle and wall collision detection. I 
 
 ### Week 4
 
-My final stand up...
+**Overview**
+
+This week I focused on getting my Coin Rush game ready for the final milestone. Most of my time went into testing, fixing problems, and improving parts of the game that were already working.
+
+**Project Wrap-Up**
+
+I finished adding the high-score system with saving, loading, and resetting scores. I also improved the menu navigation, fixed collision issues, and cleaned up how my classes communicate. I spent time making sure the changes didn't break other parts of the game.
+
+**Challenges**
+
+One issue I ran into was the player sometimes appearing past an obstacle after losing their final life. The collision was being detected, but the position wasn't updating the way I expected. Going back through the movement logic helped me figure out what was happening and correct it.
+
+**Biggest Takeaway*
+
+The biggest thing I've learned is that understanding how everything connects is just as important as knowing how to write individual lines of code. I've gotten better at breaking problems down, testing my changes, and using GitHub to keep track of my progress. I still have a lot to learn, but I'm more comfortable working through problems than I was at the start.
+
+**Future Development**
+
+If I continue working on Coin Rush, I'd like to add more levels, different obstacles, and possibly turn it into a graphical game. I think it would be interesting to take what I've built in the console and eventually create something with actual character movement and visuals.
+
